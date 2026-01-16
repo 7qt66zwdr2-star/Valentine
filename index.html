@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Confetti -->
+  <!-- Confetti library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
@@ -20,17 +20,16 @@
     <h1>Coucou p'tite princesse 💖</h1>
     <p>J’ai quelque chose à te dire… 💌</p>
     <p>Prends une seconde, respire…</p>
-    <button onclick="startAudio(); nextScreen(2)">Découvrir</button>
+    <button onclick="nextScreen(2)">Découvrir</button>
   </section>
 
   <!-- Écran 2 -->
   <section class="screen" id="screen2">
     <h1>Écoute avec le cœur 🎧</h1>
-    <p>Car c'est mon cœur qui parle…</p>
+    <p>Car c'est mon coeur qui parle…</p>
 
-    <!-- Audio (sans autoplay) -->
-    <audio id="loveAudio">
-      <source src="untitled.wav" type="audio/wav">
+    <audio controls>
+      <source src="untitled.wav" type="audio/mpeg">
       Ton navigateur ne supporte pas l’audio.
     </audio>
 
