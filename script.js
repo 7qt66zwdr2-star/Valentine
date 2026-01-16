@@ -3,15 +3,28 @@ function nextScreen(n) {
   document.querySelectorAll('.screen').forEach(screen => {
     screen.classList.remove('active');
   });
-  document.getElementById(`screen${n}`).classList.add('active');
+
+  const target = document.getElementById(`screen${n}`);
+  if (target) {
+    target.classList.add('active');
+  }
+}
+
+// Lancer l’audio après interaction utilisateur
+function startAudio() {
+  const audio = document.getElementById("loveAudio");
+  if (audio) {
+    audio.volume = 0.7;
+    audio.play().catch(() => {
+      console.log("Lecture audio bloquée");
+    });
+  }
 }
 
 // Quand elle clique OUI
 function yes() {
-  // Affiche l’écran final
   nextScreen(4);
 
-  // Lancer l’effet pétillant
   confetti({
     particleCount: 200,
     spread: 100,
@@ -19,30 +32,16 @@ function yes() {
     colors: ['#e2556b', '#f6c1cc', '#fff7f9']
   });
 
-  // Attendre 1,2 seconde avant WhatsApp
   setTimeout(() => {
-    const message = encodeURIComponent(
-      "Coucou 😊 j’ai cliqué sur OUI 💖"
-    );
-
-    window.open(
-      "https://wa.me/91052676?text=" + message,
-      "_blank"
-    );
+    const message = encodeURIComponent("Coucou 😊 j’ai cliqué sur OUI 💖");
+    window.open("https://wa.me/91052676?text=" + message, "_blank");
   }, 1200);
 }
 
 // Quand elle clique NON
 function no() {
-  // Petite pause aussi (cohérent)
   setTimeout(() => {
-    const message = encodeURIComponent(
-      "Coucou 😊 j’ai cliqué sur NON 🤍"
-    );
-
-    window.open(
-      "https://wa.me/NUMERO?text=" + message,
-      "_blank"
-    );
+    const message = encodeURIComponent("Coucou 😊 j’ai cliqué sur NON 🤍");
+    window.open("https://wa.me/91052676?text=" + message, "_blank");
   }, 600);
 }
